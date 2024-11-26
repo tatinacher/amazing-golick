@@ -556,8 +556,8 @@ svgList.forEach(({ svg, width, height, x, y }) => {
       width,
       height,
       {
+        isSensor: true,
         isStatic: false, // Объект движется
-        mass: 0,
         restitution: 0.4, // Полный отскок
         frictionAir, // Низкое сопротивление воздуха
         render: {

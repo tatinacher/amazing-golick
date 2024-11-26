@@ -476,7 +476,7 @@ svgList.forEach(({ svg, width, height, x, y }) => {
       width: screen_width,
       height: screen_height,
       wireframes: false, // Отключаем каркас
-      background: "black",
+      background: "transparent",
     },
   });
 

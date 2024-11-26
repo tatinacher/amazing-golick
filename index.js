@@ -521,7 +521,7 @@ svgList.forEach(({ svg, width, height, x, y }) => {
       {
         isStatic: true,
         render: {
-          fillStyle: "red",
+          fillStyle: "transparent",
         },
       }
     ),
@@ -533,7 +533,7 @@ svgList.forEach(({ svg, width, height, x, y }) => {
       {
         isStatic: true,
         render: {
-          fillStyle: "red",
+          fillStyle: "transparent",
         },
       }
     ),

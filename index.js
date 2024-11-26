@@ -10,104 +10,103 @@ const buddsTags = [
   },
   {
     name: "Редизайн",
-    x: 0.2,
-    y: 0.3,
+    x: 0.3,
+    y: 0.29,
     className: ["white"],
     rotation: 15,
     width: 265,
     height: 98,
   },
-  /*{
-        name: "#",
-        x: 0.7,
-        y: 0.15,
-        className: ["purple", "round"],
-        rotation: -15,
-        width: 98,
-        height: 98,
-    },
-    {
-        name: "%",
-        x: 0.3,
-        y: 0.25,
-        className: ["green", "round"],
-        rotation: 15,
-        width: 98,
-        height: 98,
-    },
-    {
-        name: "//",
-        x: 0.8,
-        y: 0.2,
-        className: ["green", "round"],
-        rotation: 15,
-        width: 98,
-        height: 98,
-    },
-    
-    {
-        name: "UI",
-        x: 0.15,
-        y: 0.25,
-        className: ["white"],
-        rotation: 15,
-        width: 145,
-        height: 98,
-    },
-    {
-        name: "Дизайн",
-        x: 0.4,
-        y: 0.1,
-        className: ["white"],
-        rotation: -15,
-        width: 233,
-        height: 98,
-    },
-    {
-        name: "Приложение",
-        x: 0.5,
-        y: 0.2,
-        className: ["white"],
-        rotation: 15,
-        width: 315,
-        height: 98,
-    },
-    {
-        name: "Кешбэк-сервис",
-        x: 0.5,
-        y: 0.3,
-        className: ["white"],
-        rotation: 30,
-        width: 354,
-        height: 98,
-    },
-    {
-        name: "UX",
-        x: 0.7,
-        y: 0.3,
-        className: ["white"],
-        rotation: -30,
-        width: 157,
-        height: 98,
-    },
-    {
-        name: "Мобильный",
-        x: 0.6,
-        y: 0.4,
-        className: ["white"],
-        rotation: -15,
-        width: 297,
-        height: 98,
-    },
-    {
-        name: "Аудит",
-        x: 0.4,
-        y: 0.45,
-        className: ["white"],
-        rotation: 15,
-        width: 207,
-        height: 98,
-    },*/
+  {
+    name: "UI",
+    x: 0.21,
+    y: 0.4,
+    className: ["white"],
+    rotation: 15,
+    width: 145,
+    height: 98,
+  },
+  {
+    name: "%",
+    x: 0.3,
+    y: 0.42,
+    className: ["green", "round"],
+    rotation: 15,
+    width: 98,
+    height: 98,
+  },
+  {
+    name: "Дизайн",
+    x: 0.4,
+    y: 0.19,
+    className: ["white"],
+    rotation: -15,
+    width: 233,
+    height: 98,
+  },
+  {
+    name: "Кешбэк-сервис",
+    x: 0.5,
+    y: 0.4,
+    className: ["white"],
+    rotation: 30,
+    width: 354,
+    height: 98,
+  },
+  {
+    name: "Аудит",
+    x: 0.41,
+    y: 0.46,
+    className: ["white"],
+    rotation: 15,
+    width: 207,
+    height: 98,
+  },
+  {
+    name: "Приложение",
+    x: 0.56,
+    y: 0.3,
+    className: ["white"],
+    rotation: 15,
+    width: 315,
+    height: 98,
+  },
+  {
+    name: "Мобильный",
+    x: 0.72,
+    y: 0.45,
+    className: ["white"],
+    rotation: -15,
+    width: 297,
+    height: 98,
+  },
+  {
+    name: "UX",
+    x: 0.72,
+    y: 0.32,
+    className: ["white"],
+    rotation: -30,
+    width: 157,
+    height: 98,
+  },
+  {
+    name: "#",
+    x: 0.67,
+    y: 0.22,
+    className: ["purple", "round"],
+    rotation: -15,
+    width: 98,
+    height: 98,
+  },
+  {
+    name: "//",
+    x: 0.8,
+    y: 0.32,
+    className: ["green", "round"],
+    rotation: 15,
+    width: 98,
+    height: 98,
+  },
 ];
 
 // var p = document.getElementById("quote_text");
@@ -453,6 +452,8 @@ svgList.forEach(({ svg, width, height, x, y }) => {
 
   /* ---------BUDDS------------------------------*/
 
+  // Импорты Matter.js
+
   const canvasBlock = document.querySelector(".budds_animation");
 
   const canvasBlockTop =
@@ -475,7 +476,7 @@ svgList.forEach(({ svg, width, height, x, y }) => {
       width: screen_width,
       height: screen_height,
       wireframes: false, // Отключаем каркас
-      background: "transparent",
+      background: "black",
     },
   });
 
@@ -548,7 +549,7 @@ svgList.forEach(({ svg, width, height, x, y }) => {
     textElement.innerText = name;
     canvasBlock.appendChild(textElement);
 
-    const frictionAir = y < 0.5 ? 0.04 : 0.005;
+    const frictionAir = 0.005;
     // Создание тела (например, прямоугольника)
     const tag = Bodies.rectangle(
       screen_width * x,
@@ -556,12 +557,14 @@ svgList.forEach(({ svg, width, height, x, y }) => {
       width,
       height,
       {
-        isSensor: true,
         isStatic: false, // Объект движется
-        restitution: 0.4, // Полный отскок
+        restitution: 0, // Полный отскок
         frictionAir, // Низкое сопротивление воздуха
         render: {
           fillStyle: "transparent", // Задаём красный цвет объекту
+        },
+        chamfer: {
+          radius: 50, // Радиус скругления углов
         },
       }
     );
